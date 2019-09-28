@@ -1,4 +1,4 @@
-# FSM-Finite-State-Machine
+# FSM-Finite-State-Machines
 
 (1) Fsm Simulator:  Hint: recursion.
 
