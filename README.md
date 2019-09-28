@@ -44,13 +44,13 @@ If the finite state machine accepts any string, your procedure must return one s
           
 ... accepts no strings (if you look closely, you'll see that you cannot actually reach state 2 when starting in state 1). 
 
-Hint #1: This problem is trickier than it looks. If you do not keep track of where you have been, your procedure may loop forever on the second example. Before you make a recursive call, add the current state to the list of visited states (and be sure to check the list of visited states elsewhere). 
+          Hint #1: This problem is trickier than it looks. If you do not keep track of where you have been, your procedure may loop               forever on the second example. Before you make a recursive call, add the current state to the list of visited states (and be             sure to check the list of visited states elsewhere). 
 
-Hint #2: (Base Case) If the current state is accepting, you can return "" as an accepting string.  
+          Hint #2: (Base Case) If the current state is accepting, you can return "" as an accepting string.  
 
-Hint #3: (Recursion) If you have an outgoing edge labeled "a" that goes to a state that accepts on the string "bc" (i.e., the recursive call returns "bc"), then you can return "abc". 
+          Hint #3: (Recursion) If you have an outgoing edge labeled "a" that goes to a state that accepts on the string "bc" (i.e., the           recursive call returns "bc"), then you can return "abc". 
 
-Hint #4: You may want to iterate over all of the edges and only consider those relevant to your current state. "for edge in edges" will iterate over all of the keys in the mapping (i.e., over all of the (state,letter) pairs) -- you'll have to write "edges[edge]" to get the destination list. 
+          Hint #4: You may want to iterate over all of the edges and only consider those relevant to your current state. "for edge in             edges" will iterate over all of the keys in the mapping (i.e., over all of the (state,letter) pairs) -- you'll have to write             "edges[edge]" to get the destination list. 
 
 (7) Fsm Optimization:  Lexical analyzers are implemented using finite state machines generated from the regular expressions of token definition rules. The performance of a lexical analyzer can depend on the size of the resulting finite state machine. If the finite state machine will be used over and over again (e.g., to analyze every token on every web page you visit!), we would like it to be as small as possible (e.g., so that your webpages load quickly). However, correctness is more important than speed: even an optimized FSM must always produce the right answer. One way to improve the performance of a finite state machine is to make it smaller by removing unreachable states. If such states are removed, the resulting FSM takes up less memory, which may make it load faster or fit better in a storage-constrained mobile device. For this assignment, you will write a procedure nfsmtrim that removes "dead" states from a non-deterministic finite state machine. A state is (transitively) "dead" if it is non-accepting and only non-accepting states are reachable from it. Such states are also called "trap" states: once entered, there is no escape. In this example FSM for r"a*" ...
 
@@ -65,8 +65,8 @@ Hint #4: You may want to iterate over all of the edges and only consider those r
 
 You may assume that the starting state is always state 1. Your procedure nfsmtrim(edges,accepting) should return a tuple (new_edges,new_accepting) corresponding to a FSM that accepts exactly the same strings as the input FSM but that has all dead states removed. 
 
-Hint 1: This problem is tricky. Do not get discouraged. 
+          Hint 1: This problem is tricky. Do not get discouraged. 
 
-Hint 2: Think back to the nfsmaccepts() procedure from the "Reading Machine Minds" homework problem in Unit 1. You are welcome to reuse your code (or the solution we went over) to that problem. 
+          Hint 2: Think back to the nfsmaccepts() procedure from the "Reading Machine Minds" homework problem in Unit 1. You are welcome           to reuse your code (or the solution we went over) to that problem. 
 
-Hint 3: Gather up all of the states in the input machine. Filter down to just those states that are "live". new_edges will then be just like edges, but including only those transitions that involve live states. new_accepting will be just like accepting, but including only those live states.
+          Hint 3: Gather up all of the states in the input machine. Filter down to just those states that are "live". new_edges will               then be just like edges, but including only those transitions that involve live states. new_accepting will be just like                 accepting, but including only those live states.
